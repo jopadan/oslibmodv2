@@ -48,8 +48,8 @@ BOOL Stream_PlayFP(VIRTUAL_FILE *fp)
     MSTREAM *l;
 
     stream_fp = fp;
-    _mm_errno = 0;
-    _mm_critical = 0;
+    MikMod_errno = 0;
+    MikMod_critical = 0;
 
     _mm_iobase_setcur(stream_fp);
 
@@ -61,8 +61,8 @@ BOOL Stream_PlayFP(VIRTUAL_FILE *fp)
     }
 
     if(l==NULL)
-    {   _mm_errno = MMERR_NOT_A_STREAM;
-        if(_mm_errorhandler!=NULL) _mm_errorhandler();
+    {   MikMod_errno = MMERR_NOT_A_STREAM;
+        if(MikMod_handler_t!=NULL) MikMod_handler();
         _mm_iobase_revert();
         return 1;
     }

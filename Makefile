@@ -25,8 +25,8 @@ PSP_FW_VERSION=371
 #<-- STAS: pack all the necessary MikMod stuff directly into libosl.a
 #          in order to avoid conflict with the newest libmikmod releases.
 SOURCE_DIR := src
-MM_DIR := $(SOURCE_DIR)/mikmod
-INCLUDE_DIR := $(MM_DIR)
+MM_DIR := $(SOURCE_DIR)/libmikmod
+MM_INCLUDE_DIR := $(MM_DIR)/include
 #<-- STAS END -->
 
 #----------------------------------------------------------------------------
@@ -80,23 +80,23 @@ PSPMATHOBJS := 	            $(SOURCE_DIR)/libpspmath/printMatrixFloat.o \
                             $(SOURCE_DIR)/libpspmath/vfpu_quaternion_sample_hermite.o \
                             $(SOURCE_DIR)/libpspmath/vfpu_quaternion_hermite_tangent.o
 
-MMLoaderObjs :=				$(MM_DIR)/mloader.o $(MM_DIR)/mlreg.o $(MM_DIR)/npertab.o \
-							$(MM_DIR)/sloader.o $(MM_DIR)/load_uni.o $(MM_DIR)/mwav.o \
-							$(MM_DIR)/load_mod.o $(MM_DIR)/load_m15.o $(MM_DIR)/load_mtm.o \
-							$(MM_DIR)/load_s3m.o $(MM_DIR)/load_stm.o $(MM_DIR)/load_669.o \
-							$(MM_DIR)/load_far.o $(MM_DIR)/load_dsm.o $(MM_DIR)/load_med.o \
-							$(MM_DIR)/load_xm.o $(MM_DIR)/load_ult.o $(MM_DIR)/load_it.o \
-							$(MM_DIR)/s3m_it.o $(MM_DIR)/load_wav.o
+MMLoaderObjs :=				$(MM_DIR)/playercode/mloader.o $(MM_DIR)/playercode/mlreg.o $(MM_DIR)/playercode/npertab.o \
+							$(MM_DIR)/playercode/sloader.o $(MM_DIR)/loaders/load_uni.o $(MM_DIR)/playercode/mwav.o \
+							$(MM_DIR)/loaders/load_mod.o $(MM_DIR)/loaders/load_m15.o $(MM_DIR)/loaders/load_mtm.o \
+							$(MM_DIR)/loaders/load_s3m.o $(MM_DIR)/loaders/load_stm.o $(MM_DIR)/loaders/load_669.o \
+							$(MM_DIR)/loaders/load_far.o $(MM_DIR)/loaders/load_dsm.o $(MM_DIR)/loaders/load_med.o \
+							$(MM_DIR)/loaders/load_xm.o $(MM_DIR)/loaders/load_ult.o $(MM_DIR)/loaders/load_it.o \
+							$(MM_DIR)/s3m_it.o $(MM_DIR)/loaders/load_wav.o
 
-MMDriverObjs :=				$(MM_DIR)/mdriver.o $(MM_DIR)/mdreg.o $(MM_DIR)/drv_nos.o
+MMDriverObjs :=				$(MM_DIR)/playercode/mdriver.o $(MM_DIR)/playercode/mdreg.o $(MM_DIR)/drivers/drv_nos.o
 
-MMPlayerObjs :=				$(MM_DIR)/mplayer.o
+MMPlayerObjs :=				$(MM_DIR)/playercode/mplayer.o
 
 MMIOOBJS :=					$(MM_DIR)/mmio/mmalloc.o \
 							$(MM_DIR)/mmio/mmerror.o $(MM_DIR)/mmio/mmio.o
 
-MIKMODLIBOBJS :=			$(MM_DIR)/stream.o \
-							$(MM_DIR)/virtch.o $(MM_DIR)/munitrk.o \
+MIKMODLIBOBJS :=			$(MM_DIR)/playercode/stream.o \
+							$(MM_DIR)/playercode/virtch.o $(MM_DIR)/playercode/munitrk.o \
 							$(MMLoaderObjs) $(MMDriverObjs) $(MMPlayerObjs)
 
 LIBOBJS :=					$(SFONTOBJS) \
@@ -164,7 +164,7 @@ OBJS :=						$(LIBOBJS)
 
 INCDIR   :=					$(INCDIR) \
 							$(SOURCE_DIR) \
-							$(INCLUDE_DIR)
+							$(MM_INCLUDE_DIR)
 
 #----------------------------------------------------------------------------
 #	Addditional libraries
