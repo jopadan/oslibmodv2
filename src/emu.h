@@ -5,6 +5,9 @@
 
 #include <math.h>
 #include <stdint.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <time.h>
 
 #ifdef _WIN32_
 #include <windows.h>
@@ -54,14 +57,55 @@ extern void emuInitGfx();
 #define GL_UNSIGNED_SHORT_1_5_5_5_REV     0x8366
 #define GL_UNSIGNED_INT_8_8_8_8_REV       0x8367
 
-typedef uint8_t u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
-typedef int8_t s8;
-typedef int16_t s16;
-typedef int32_t s32;
-typedef int64_t s64;
-typedef uint64_t u64;
+typedef uint8_t    u8;
+typedef uint16_t   u16;
+typedef uint32_t   u32;
+typedef uint64_t   u64;
+
+typedef int8_t     s8;
+typedef int16_t    s16;
+typedef int32_t    s32;
+typedef int64_t    s64;
+
+typedef size_t     usz;
+typedef ssize_t    ssz;
+typedef GLsizei    ssz32;
+typedef GLsizeiptr off;
+
+typedef GLsizeiptr ptr;
+typedef GLintptr   sptr;
+typedef void*      vptr;
+typedef vptr       addr;
+
+typedef void       vd;
+typedef bool       bln;
+typedef GLfixed    fxd;
+
+typedef u8     OSL_U8;
+typedef u8     OSL_BYTE;
+typedef u16    OSL_U16;
+typedef u32    OSL_U32;
+typedef u64    OSL_U64;
+
+typedef s8     OSL_S8;
+typedef s8     OSL_CHAR;
+typedef s16    OSL_S16;
+typedef s32    OSL_S32;
+typedef s64    OSL_S64;
+
+typedef usz    OSL_SIZE;
+typedef ssz    OSL_SSIZE;
+typedef ssz32  OSL_SSIZE32;
+typedef off    OSL_OFF;
+
+typedef ptr    OSL_PTR;
+typedef sptr   OSL_SPTR;
+typedef vptr   OSL_VOID_PTR;
+typedef addr   OSL_ADDR;
+
+typedef vd     OSL_VOID;
+typedef bln    OSL_BOOL;
+typedef fxd    OSL_FIXED;
 
 enum {GU_PSM_5650=0, GU_PSM_5551, GU_PSM_4444, GU_PSM_8888, GU_PSM_T4, GU_PSM_T8};
 enum {GU_NEAREST=GL_NEAREST, GU_LINEAR=GL_LINEAR};
@@ -342,7 +386,11 @@ int sceCtrlSetSamplingCycle(int cycle);
 int sceCtrlSetSamplingMode(int mode);
 int sceCtrlPeekBufferPositive(SceCtrlData *pad_data, int count);
 void emuGlReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
+
+#ifdef _WIN32_
 void gettimeofday(struct timeval *tv, int unused);
+#endif
+
 void emuConfigure2DTransfer(int enable);
 int sceIoLseek32(SceUID  fd, int  offset, int  whence);
 int sceAudioChReserve (int channel, int samplecount, int format);

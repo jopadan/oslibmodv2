@@ -1,19 +1,19 @@
 #include "oslib.h"
 
 //We're beginning at the VRAM base
-u32 osl_vramBase = 0x40000000;
+ptr osl_vramBase = 0x40000000;
 //2 MBytes
-int osl_vramSize = 2 << 20;
+usz osl_vramSize = 2 << 20;
 //Use it or not?
-int osl_useVramManager = 1;
-u32 osl_currentVramPtr;
+bln osl_useVramManager = true;
+ptr osl_currentVramPtr;
 
 #define DEFAULT_TABLE_SIZE 1024
 
-int osl_vramBlocksMax = 0, osl_vramBlocksNb = 0;
+usz osl_vramBlocksMax = 0, osl_vramBlocksNb = 0;
 
 typedef struct		{
-	u32 offset, size;
+	usz offset,size;
 } OSL_VRAMBLOCK;
 
 #define isBlockFree(i)				(osl_vramBlocks[i].size & 0x80000000)
@@ -175,13 +175,13 @@ int oslVramMgrFreeBlock(void *blockAddress, int blockSize)		{
 	return 1;
 }
 
-int oslVramMgrSetParameters(void *baseAddr, int size)		{
-   int curVramSize = osl_vramSize;
-   int blockNum = osl_vramBlocksNb - 1;
-   int sizeDiff;
+OSL_BOOL oslVramMgrSetParameters(OSL_ADDR baseAddr, OSL_SIZE size)		{
+   OSL_SIZE curVramSize = osl_vramSize;
+   OSL_SSIZE blockNum = osl_vramBlocksNb - 1;
+   OSL_SSIZE sizeDiff;
 
 	if (!osl_useVramManager)
-		return 0;
+		return false;
 	//La taille est toujours multiple de 16 - arrondir au bloc supérieur
 	if (size & 15)
 		size += 16;
@@ -192,13 +192,13 @@ int oslVramMgrSetParameters(void *baseAddr, int size)		{
 	//Le dernier bloc est TOUJOURS libre, même s'il reste 0 octet. Cf la bidouille dans ulTexVramAlloc
 	if (isBlockFree(blockNum) && getBlockSize(blockNum) + sizeDiff >= 0)			{
 		setBlockSize(blockNum, getBlockSize(blockNum) + sizeDiff);
-		osl_vramBase = (uintptr_t)baseAddr;
+		osl_vramBase = baseAddr;
 		osl_vramSize = size;
 		//Pour ceux qui ne veulent pas utiliser le gestionnaire...
 		osl_currentVramPtr = osl_vramBase;
 	}
 	else
-		return 0;
-	return 1;
+		return false;
+	return true;
 }
 

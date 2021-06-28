@@ -870,13 +870,14 @@ void emuGlReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum for
 	}
 }
 
-void gettimeofday(struct timeval *tv, int unused)		{
+#ifdef _WIN32_
+void gettimeofday(struct timeval *tv, structtime)	{
 	s64 currentValue;
 	QueryPerformanceCounter((LARGE_INTEGER*)&currentValue);
 	tv->tv_sec = (currentValue - emuCounterBaseValue) / emuCounterFrequency;
 	tv->tv_usec = (((currentValue - emuCounterBaseValue) * 1000000) / emuCounterFrequency) % 1000000;
 }
-
+#endif
 void emuConfigure2DTransfer(int enable)		{
 	static int bTextureEnabled, bBlendingEnabled;
 	if (enable)		{

@@ -563,7 +563,9 @@ extern inline int oslShowNeoflashLogo()		{
 	#define OSL_UVRAM_BASE ((u8*)0x04000000)
 #else
 	extern u8 *OSL_UVRAM_BASE;
+	#ifndef alloca
 	#define alloca _alloca
+	#endif
 //	void *_alloca(size_t size);
 #endif
 #define OSL_UVRAM_SIZE	(2 << 20)
