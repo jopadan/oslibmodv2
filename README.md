@@ -1,13 +1,6 @@
 # OldSchool Library (OSLib) MODv2
-[![Build Status](https://travis-ci.org/dogo/oslibmodv2.svg?branch=master)](https://travis-ci.org/dogo/oslibmodv2)
 
 This is a modded version of OSLib 2.10 and OSLib MOD
-
-The original OSLib by Brunni can be found here:
-http://brunni.palib.info/new/index.php?page=pspsoft_oslib
-
-The original OSLib MOD by Sakya can be found here:
-http://www.sakya.it/forums/viewforum.php?f=7
 
 # CURRENT RELEASE
 

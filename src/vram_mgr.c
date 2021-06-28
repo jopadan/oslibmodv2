@@ -192,7 +192,7 @@ int oslVramMgrSetParameters(void *baseAddr, int size)		{
 	//Le dernier bloc est TOUJOURS libre, même s'il reste 0 octet. Cf la bidouille dans ulTexVramAlloc
 	if (isBlockFree(blockNum) && getBlockSize(blockNum) + sizeDiff >= 0)			{
 		setBlockSize(blockNum, getBlockSize(blockNum) + sizeDiff);
-		osl_vramBase = (u32)baseAddr;
+		osl_vramBase = (uintptr_t)baseAddr;
 		osl_vramSize = size;
 		//Pour ceux qui ne veulent pas utiliser le gestionnaire...
 		osl_currentVramPtr = osl_vramBase;

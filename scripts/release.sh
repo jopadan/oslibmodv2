@@ -1,7 +1,7 @@
 #!/bin/sh
 export TARGET="./Distrib"
 export SOURCE_DIR="./src"
-
+export SCRIPT_DIR="./scripts"
 echo
 echo "-------------------"
 echo "OSLib release maker"
@@ -49,8 +49,8 @@ cp -f $SOURCE_DIR/sfont.h $TARGET/Install/oslib/
 echo "Copying other files...."
 cp -f README.md $TARGET
 cp -f CHANGELOG.TXT $TARGET
-cp -f install.bat $TARGET
-cp -f install.sh $TARGET
+cp -f ${SCRIPT_DIR}/install.bat $TARGET
+cp -f ${SCRIPT_DIR}/install.sh $TARGET
 
 echo "Copying DOC...."
 cp -rf OSLib_MODv2_Documentation $TARGET/Doc

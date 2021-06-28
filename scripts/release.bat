@@ -2,6 +2,7 @@
 
 set TARGET=..\Distrib
 set SOURCE_DIR=.\src
+set SCRIPTS_DIR=.\scripts
 
 echo
 echo "-------------------"
@@ -52,8 +53,8 @@ xcopy %SOURCE_DIR%\sfont.h %TARGET%\Install\oslib\
 echo "xcopying other files...."
 xcopy README.md %TARGET%
 xcopy CHANGELOG.TXT %TARGET%
-xcopy install.bat %TARGET%
-xcopy install.sh %TARGET%
+xcopy %SCRIPTS_DIR%/install.bat %TARGET%
+xcopy %SCRIPTS_DIR%/install.sh %TARGET%
 
 echo "xcopying DOC...."
 xcopy OSLib_MODv2_Documentation %TARGET%\Doc
