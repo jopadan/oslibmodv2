@@ -4,10 +4,18 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
 #include <math.h>
+#include <stdint.h>
+
+#ifdef _WIN32_
 #include <windows.h>
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include "gl/glext.h"
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glext.h>
+#endif
 
 #ifdef __cplusplus
 	extern "C"		{
@@ -25,10 +33,13 @@ extern void emuInit();
 extern void emuStartDrawing();
 extern void emuInitGfx();
 
+#ifdef _WIN32_
 //A checker
 #define PSP_MAIN_THREAD_ATTR(value) int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)		\
 												{	emuInit();	}
-
+#else
+#define PSP_MAIN_THREAD_ATTR(value) int main(int argc, char** argv) { emuInit(); }
+#endif
 
 #define GL_UNSIGNED_BYTE_3_3_2            0x8032
 #define GL_UNSIGNED_SHORT_4_4_4_4         0x8033
@@ -43,14 +54,14 @@ extern void emuInitGfx();
 #define GL_UNSIGNED_SHORT_1_5_5_5_REV     0x8366
 #define GL_UNSIGNED_INT_8_8_8_8_REV       0x8367
 
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned long u32;
-typedef signed char s8;
-typedef signed short s16;
-typedef signed long s32;
-typedef signed __int64 s64;
-typedef unsigned __int64 u64;
+typedef uint8_t u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef int8_t s8;
+typedef int16_t s16;
+typedef int32_t s32;
+typedef int64_t s64;
+typedef uint64_t u64;
 
 enum {GU_PSM_5650=0, GU_PSM_5551, GU_PSM_4444, GU_PSM_8888, GU_PSM_T4, GU_PSM_T8};
 enum {GU_NEAREST=GL_NEAREST, GU_LINEAR=GL_LINEAR};
