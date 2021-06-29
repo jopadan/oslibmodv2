@@ -1,6 +1,6 @@
 #include "oslib.h"
 #ifndef PSP
-	#include "../PC_Main/GL/glext.h"
+	#include <GL/glext.h>
 #endif
 
 /*

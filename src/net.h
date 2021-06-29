@@ -1,15 +1,17 @@
 #ifndef NET_H
 #define NET_H
 
-#include <sys/fd_set.h>
-
 /** @defgroup Network Network
 
 	Network functions
 	@{
 */
 //<-- STAS: APCTL states returned by oslGetAPState() -->
+
+#ifdef PSP
+#include <sys/fd_set.h>
 #include <pspnet_apctl.h>
+#endif
 
 #define OSL_APCTL_STATE_DISCONNECTED  PSP_NET_APCTL_STATE_DISCONNECTED
 #define OSL_APCTL_STATE_SCANNING      PSP_NET_APCTL_STATE_SCANNING
