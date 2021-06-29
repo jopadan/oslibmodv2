@@ -11,6 +11,7 @@ extern "C" {
 	Functions using the Vector Floating Point Unit (VFPU). All this functions are based on libpspmath version 4 by MrMr[iCE]
 	@{
 */
+#ifdef PSP
 #include "libpspmath/pspmath.h"
 
 /**
@@ -166,7 +167,7 @@ extern "C" {
   *
 */
 #define oslFmodf vfpu_fmodf
-
+#endif
 /** @} */ // end of oslMath
 
 #ifdef __cplusplus

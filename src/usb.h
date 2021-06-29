@@ -1,11 +1,13 @@
 #ifndef USB_H
 #define USB_H
 
+#ifdef PSP
 #include <pspusb.h>
 #include <pspusbstor.h>
 #include <pspsdk.h>
 
 #define oslGetUsbState sceUsbGetState
+
 
 /** @defgroup Usb USB
 
@@ -16,7 +18,7 @@
 enum {OSL_USB_ACTIVATED=PSP_USB_ACTIVATED,
       OSL_USB_CABLE_CONNECTED=PSP_USB_CABLE_CONNECTED,
 	  OSL_USB_CONNECTION_ESTABLISHED=PSP_USB_CONNECTION_ESTABLISHED};
-
+#endif
 /** Initializes USB modules, must be called before oslStartUsbStorage.
 Returns 0 on success.*/
 extern int oslInitUsbStorage();

@@ -103,7 +103,7 @@ set(EXAMPLE_SOURCE_FILES
 pkg_search_module(PNG REQUIRED libpng)
 pkg_search_module(JPEG REQUIRED libjpeg)
 pkg_search_module(ZLIB REQUIRED zlib)
-#pkg_search_module(MIKMOD REQUIRED mikmod)
+pkg_search_module(MIKMOD REQUIRED libmikmod)
 #pkg_search_module(LIBPSPMATH REQUIRED libpspmath)
 
 # lib.cdfmt library

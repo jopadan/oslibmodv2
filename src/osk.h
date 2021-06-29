@@ -7,10 +7,37 @@
 	@{
 */
 //<-- STAS: define the OSL_KEYBOARD structure and its methods for multithreaded environment
+
+#ifdef PSP
+
 typedef struct {
     SceUtilityOskParams oskParams;
 //    SceUtilityOskData  *oskData;
 } OSL_KEYBOARD;
+
+#define OSL_OSK_RESULT_UNCHANGED	PSP_UTILITY_OSK_RESULT_UNCHANGED
+#define OSL_OSK_RESULT_CANCELLED	PSP_UTILITY_OSK_RESULT_CANCELLED
+#define OSL_OSK_RESULT_CHANGED		PSP_UTILITY_OSK_RESULT_CHANGED
+#define OSL_OSK_CANCEL    		PSP_UTILITY_OSK_RESULT_CANCELLED
+#define OSL_OSK_CHANGED    		PSP_UTILITY_OSK_RESULT_CHANGED
+#define OSL_OSK_UNCHANGED    		PSP_UTILITY_OSK_RESULT_UNCHANGED
+
+#else
+
+typedef struct {
+	int oskParams;	
+} OSL_KEYBOARD;
+
+enum OSL_OSK_RESULT {
+	OSL_OSK_UNCHANGED        = 0,
+	OSL_OSK_RESULT_UNCHANGED = 0,
+	OSL_OSK_CANCEL           = 1,
+	OSL_OSK_RESULT_CANCELLED = 1,
+	OSL_OSK_RESULT_CHANGED   = 2,
+	OSL_OSK_CHANGED          = 2,
+};
+
+#endif
 
 extern OSL_KEYBOARD* osl_osk;
 
@@ -31,44 +58,6 @@ extern unsigned short* oslOskOutTextEx(OSL_KEYBOARD *kbd, int idx);
 
 extern void oslEndOskEx(OSL_KEYBOARD *kbd);
 
-
-#define OSL_OSK_RESULT_UNCHANGED	PSP_UTILITY_OSK_RESULT_UNCHANGED
-#define OSL_OSK_RESULT_CANCELLED	PSP_UTILITY_OSK_RESULT_CANCELLED
-#define OSL_OSK_RESULT_CHANGED		PSP_UTILITY_OSK_RESULT_CHANGED
-//<-- STAS END -->
-
-/**OSK cancel*/
-#define OSL_OSK_CANCEL    PSP_UTILITY_OSK_RESULT_CANCELLED		/**<-- STAS: for backward compatibility */
-/**OSK changed*/
-#define OSL_OSK_CHANGED    PSP_UTILITY_OSK_RESULT_CHANGED
-/**OSK unchanged*/
-#define OSL_OSK_UNCHANGED    PSP_UTILITY_OSK_RESULT_UNCHANGED
-
-/** Initializes the OSK
-	\param *descStr
-        Text shown as a description (bottom right corner)
-    \param initialStr
-        Initial text in the OSK
-    \param textLimit
-        Maximum number of chars
-    \param linesNumber
-        Number of lines
-    \param language
-        Language
-			JAPANESE			0
-			ENGLISH				1
-			FRENCH				2
-			SPANISH				3
-			GERMAN				4
-			ITALIAN				5
-			DUTCH				6
-			PORTUGUESE			7
-			RUSSIAN				8
-			KOREAN				9
-			CHINESE_TRADITIONAL	10
-			CHINESE_SIMPLIFIED	11
-		If you pass to the function -1 then the language set in the firmware is used
-*/
 void oslInitOsk(char *descStr, char *initialStr, int textLimit, int linesNumber, int language);
 
 /** Draws the OSK

@@ -10,17 +10,6 @@ extern "C" {
 	#undef RGB
 #endif
 
-/** Boolean type */
-#ifndef __cplusplus
-#define bool char
-#endif
-
-
-
-
-
-
-
 /** @defgroup drawing Drawing
 
     Drawing in OSLib.
