@@ -8,18 +8,44 @@ include(GNUInstallDirs)
 include(FindPkgConfig)
 
 set(SOURCE_DIR src)
+set(PLATFORM_DIR ${SOURCE_DIR}/platform)
+
 set(SFONT_FILES ${SOURCE_DIR}/sfont.c ${SOURCE_DIR}/sfont.h)
 
 set(SOURCE_FILES ${SFONT_FILES}
 		 ${SOURCE_DIR}/oslib.c
-		 ${SOURCE_DIR}/psp/oslmath.c 
-		 ${SOURCE_DIR}/psp/drawing.c 
-		 ${SOURCE_DIR}/win/oslmath.c 
-		 ${SOURCE_DIR}/win/drawing.c 
-		 ${SOURCE_DIR}/u64/oslmath.c 
-		 ${SOURCE_DIR}/u64/drawing.c 
-		 ${SOURCE_DIR}/x11/oslmath.c 
-		 ${SOURCE_DIR}/x11/drawing.c
+		 # various
+		 ${PLATFORM_DIR}/win/oslmath.c 
+		 ${PLATFORM_DIR}/win/drawing.c 
+		 ${PLATFORM_DIR}/x11/oslmath.c 
+		 ${PLATFORM_DIR}/x11/drawing.c
+		 # MIPS R4x00 based
+		 ${PLATFORM_DIR}/pspmips/oslmath.c 
+		 ${PLATFORM_DIR}/pspmips/drawing.c 
+		 ${PLATFORM_DIR}/u64mips/oslmath.c 
+		 ${PLATFORM_DIR}/u64mips/drawing.c 
+		 ${PLATFORM_DIR}/sgimips/oslmath.c 
+		 ${PLATFORM_DIR}/sgimips/drawing.c
+		 # m68k based
+		 ${PLATFORM_DIR}/amiga/oslmath.c 
+		 ${PLATFORM_DIR}/amiga/drawing.c
+		 ${PLATFORM_DIR}/mac68k/oslmath.c 
+		 ${PLATFORM_DIR}/mac68k/drawing.c
+		 # dreamcast
+		 ${PLATFORM_DIR}/dreamcast/oslmath.c 
+		 ${PLATFORM_DIR}/dreamcast/drawing.c
+		 # IBM PowerPC 970 based
+		 ${PLATFORM_DIR}/amigappc/oslmath.c 
+		 ${PLATFORM_DIR}/amigappc/drawing.c
+		 ${PLATFORM_DIR}/macppc/oslmath.c 
+		 ${PLATFORM_DIR}/macppc/drawing.c
+		 # beos 
+		 ${PLATFORM_DIR}/beos/oslmath.c 
+		 ${PLATFORM_DIR}/beos/drawing.c
+		 # kolibrios
+		 ${PLATFORM_DIR}/kolibrios/oslmath.c 
+		 ${PLATFORM_DIR}/kolibrios/drawing.c
+		 # source
 		 ${SOURCE_DIR}/image.c
 		 ${SOURCE_DIR}/palette.c
 		 ${SOURCE_DIR}/shape.c 

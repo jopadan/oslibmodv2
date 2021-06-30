@@ -23,8 +23,46 @@ diautilio@gmail.com
 # INSTALL
 
 To install OSLib MODv2  
+
+cmake .
+make install
+
+or
+
 copy libosl.a to $PSPSDK/lib/  
 copy the oslib directory (containing header files) in $PSPSDK/include/
+
+# STATUS
+
+platform support implemented:
+[MIPS R4x00]:
+- [pspmips - Sony Playstation Portable](www.github.com/pspdev)
+
+platform support planned:
+
+[various]:
+- [win - Microsoft Windows]()
+- [x11 - UNIX-like X.org]()
+
+[x86_64]:
+- [beos - BeOS/HaikuOS](https://www.haiku-os.org/)
+- [kolibrios - KolibriOS](https://www.kolibrios.org/)
+
+[MIPS R4x00]:
+- [pspmips - Sony Playstation Portable](www.github.com/pspdev)
+- [u64mips - Nintendo Ultra64 IRIX] (http://www.ultra64.ca)
+- [sgimips - SGI Indigo IRIX] (http://sgi.com/)
+
+[Motorola m68k]:
+- [amiga - Commodore Amiga AROS/MorphOS]()
+- [mac68k - Apple Motorola]()
+
+[IBM PowerPC 970]:
+- [macppc - Apple G4/5](http://www.apple.com)
+- [amigappc - Commodore Amiga AROS/MorphOS](http://www.commodore.net)
+
+[Hitachi SH4]:
+- [dreamcast - Sega Dreamcast KallistiOS](http://www.github.com/KallistiOS/)
 
 # THANKS
 
