@@ -1,5 +1,5 @@
 #include "oslib.h"
-#include "vfpu.h"
+#include "simd.h"
 
 /*float calc_x(int angle, int cX, int cY, int x)
 {
@@ -84,14 +84,14 @@ void oslDrawImage(OSL_IMAGE *img)				{
 
 			vertices[0].u = uVal;
 			vertices[0].v = img->offsetY0;
-			vertices[0].x = oslVfpu_cosf(angleRadians, xVal) - oslVfpu_sinf(angleRadians, cY) + img->x;
-			vertices[0].y = oslVfpu_sinf(angleRadians, xVal) + oslVfpu_cosf(angleRadians, cY) + img->y;
+			vertices[0].x = oslSIMD_cosf(angleRadians, xVal) - oslSIMD_sinf(angleRadians, cY) + img->x;
+			vertices[0].y = oslSIMD_sinf(angleRadians, xVal) + oslSIMD_cosf(angleRadians, cY) + img->y;
 			vertices[0].z = 0;
 
 			vertices[2].u = uVal;
 			vertices[2].v = img->offsetY1;
-			vertices[2].x = oslVfpu_cosf(angleRadians, xVal) - oslVfpu_sinf(angleRadians, tmpY) + img->x;
-			vertices[2].y = oslVfpu_sinf(angleRadians, xVal) + oslVfpu_cosf(angleRadians, tmpY) + img->y;
+			vertices[2].x = oslSIMD_cosf(angleRadians, xVal) - oslSIMD_sinf(angleRadians, tmpY) + img->x;
+			vertices[2].y = oslSIMD_sinf(angleRadians, xVal) + oslSIMD_cosf(angleRadians, tmpY) + img->y;
 			vertices[2].z = 0;
 
 			uVal += uCoeff;
@@ -103,14 +103,14 @@ void oslDrawImage(OSL_IMAGE *img)				{
 
 			vertices[1].u = uVal;
 			vertices[1].v = img->offsetY0;
-			vertices[1].x = oslVfpu_cosf(angleRadians, xVal) - oslVfpu_sinf(angleRadians, cY) + img->x;
-			vertices[1].y = oslVfpu_sinf(angleRadians, xVal) + oslVfpu_cosf(angleRadians, cY) + img->y;
+			vertices[1].x = oslSIMD_cosf(angleRadians, xVal) - oslSIMD_sinf(angleRadians, cY) + img->x;
+			vertices[1].y = oslSIMD_sinf(angleRadians, xVal) + oslSIMD_cosf(angleRadians, cY) + img->y;
 			vertices[1].z = 0;
 
 			vertices[3].u = uVal;
 			vertices[3].v = img->offsetY1;
-			vertices[3].x = oslVfpu_cosf(angleRadians, xVal) - oslVfpu_sinf(angleRadians, tmpY) + img->x;
-			vertices[3].y = oslVfpu_sinf(angleRadians, xVal) + oslVfpu_cosf(angleRadians, tmpY) + img->y;
+			vertices[3].x = oslSIMD_cosf(angleRadians, xVal) - oslSIMD_sinf(angleRadians, tmpY) + img->x;
+			vertices[3].y = oslSIMD_sinf(angleRadians, xVal) + oslSIMD_cosf(angleRadians, tmpY) + img->y;
 			vertices[3].z = 0;
 
 			sceGuDrawArray(GU_TRIANGLE_STRIP,GU_TEXTURE_32BITF|GU_VERTEX_32BITF|GU_TRANSFORM_2D,4,0,vertices);

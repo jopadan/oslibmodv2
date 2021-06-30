@@ -12,6 +12,13 @@ extern "C" {
 	@{
 */
 #ifdef PSP
+
+//	#include "vfpu_ops.h"
+#include <psptypes.h>
+#include <libpspmath/pspmath.h>
+
+//extern float vfpu_vars[4] __attribute__((aligned(64)));
+
 #include "libpspmath/pspmath.h"
 
 /**
@@ -168,6 +175,10 @@ extern "C" {
 */
 #define oslFmodf vfpu_fmodf
 #endif
+
+extern float oslMathSIMD_sinf(float angle, float rayon);
+extern float oslMathSIMD_cosf(float angle, float rayon);
+
 /** @} */ // end of oslMath
 
 #ifdef __cplusplus

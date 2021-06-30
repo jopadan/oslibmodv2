@@ -171,7 +171,7 @@ float vfpu_cosi(int f1, int f2)
    return vfpu_vars[0];
 }*/
 
-float oslVfpu_sinf(float f1, float f2)
+float oslSIMD_sinf(float f1, float f2)
 {
    register void *ptr __asm ("a0") = vfpu_vars;
    *(float*)ptr = f1;
@@ -192,7 +192,7 @@ float oslVfpu_sinf(float f1, float f2)
    return vfpu_vars[0];
 }
 
-float oslVfpu_cosf(float f1, float f2)
+float oslSIMD_cosf(float f1, float f2)
 {
    register void *ptr __asm ("a0") = vfpu_vars;
    *(float*)ptr = f1;

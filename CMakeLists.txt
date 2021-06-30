@@ -12,8 +12,14 @@ set(SFONT_FILES ${SOURCE_DIR}/sfont.c ${SOURCE_DIR}/sfont.h)
 
 set(SOURCE_FILES ${SFONT_FILES}
 		 ${SOURCE_DIR}/oslib.c
-		 ${SOURCE_DIR}/vfpu.c 
-		 ${SOURCE_DIR}/drawing.c
+		 ${SOURCE_DIR}/psp/oslmath.c 
+		 ${SOURCE_DIR}/psp/drawing.c 
+		 ${SOURCE_DIR}/win/oslmath.c 
+		 ${SOURCE_DIR}/win/drawing.c 
+		 ${SOURCE_DIR}/u64/oslmath.c 
+		 ${SOURCE_DIR}/u64/drawing.c 
+		 ${SOURCE_DIR}/x11/oslmath.c 
+		 ${SOURCE_DIR}/x11/drawing.c
 		 ${SOURCE_DIR}/image.c
 		 ${SOURCE_DIR}/palette.c
 		 ${SOURCE_DIR}/shape.c 
