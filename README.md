@@ -52,8 +52,8 @@ platform support planned:
 
 [MIPS R4x00]:
 - [pspmips   - Sony Playstation Portable](www.github.com/pspdev/)
-- [u64mips   - Nintendo Ultra64 IRIX] (http://www.ultra64.ca/)
-- [sgimips   - SGI Indigo IRIX] (http://www.sgi.com/)
+- [u64mips   - Nintendo Ultra64 IRIX](http://www.ultra64.ca/)
+- [sgimips   - SGI Indigo IRIX](http://www.sgi.com/)
 
 [Motorola m68k]:
 - [amiga     - Commodore Amiga/m68k AROS](http://aros.sf.net/)
