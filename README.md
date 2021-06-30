@@ -35,31 +35,35 @@ copy the oslib directory (containing header files) in $PSPSDK/include/
 # STATUS
 
 platform support implemented:
+
 [MIPS R4x00]:
-- [pspmips - Sony Playstation Portable](www.github.com/pspdev)
+- [pspmips   - Sony Playstation Portable](www.github.com/pspdev/)
 
 platform support planned:
 
 [various]:
-- [win - Microsoft Windows]()
-- [x11 - UNIX-like X.org]()
+- [win       - Microsoft Windows](http://www.microsoft.com/)
+- [x11       - UNIX-like X.org](http://www.freedesktop.org/)
 
 [x86_64]:
-- [beos - BeOS/HaikuOS](https://www.haiku-os.org/)
+- [beos      - BeOS/HaikuOS](https://www.haiku-os.org/)
 - [kolibrios - KolibriOS](https://www.kolibrios.org/)
+- [amiga     - Commodore Amiga/x86_64 AROS](https://aros.sf.net/)
 
 [MIPS R4x00]:
-- [pspmips - Sony Playstation Portable](www.github.com/pspdev)
-- [u64mips - Nintendo Ultra64 IRIX] (http://www.ultra64.ca)
-- [sgimips - SGI Indigo IRIX] (http://sgi.com/)
+- [pspmips   - Sony Playstation Portable](www.github.com/pspdev/)
+- [u64mips   - Nintendo Ultra64 IRIX] (http://www.ultra64.ca/)
+- [sgimips   - SGI Indigo IRIX] (http://www.sgi.com/)
 
 [Motorola m68k]:
-- [amiga - Commodore Amiga AROS/MorphOS]()
-- [mac68k - Apple Motorola]()
+- [amiga     - Commodore Amiga/m68k AROS](http://aros.sf.net/)
+- [amiga     - Commodore Amiga/m68k MorphOS](http://www.morphos-team.net/)
+- [mac68k    - Apple/m68k](http://www.apple.com/)
 
 [IBM PowerPC 970]:
-- [macppc - Apple G4/5](http://www.apple.com)
-- [amigappc - Commodore Amiga AROS/MorphOS](http://www.commodore.net)
+- [macppc    - Apple PowerPC G4/5](http://www.apple.com/)
+- [amigappc  - Commodore Amiga/PPC AROS](http://aros.sf.net/)
+- [amigappc  - Commodore Amiga/PPC MorphOS](http://www.morphos-team.net/)
 
 [Hitachi SH4]:
 - [dreamcast - Sega Dreamcast KallistiOS](http://www.github.com/KallistiOS/)
