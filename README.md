@@ -24,13 +24,17 @@ diautilio@gmail.com
 
 To install OSLib MODv2  
 
+```c
 cmake .
 make install
+```
 
 or
 
-copy libosl.a to $PSPSDK/lib/  
-copy the oslib directory (containing header files) in $PSPSDK/include/
+```c
+cp -ar libosl.a to $PSPSDK/lib/  
+cp -ar src/*.h in $PSPSDK/include/
+```
 
 # STATUS
 
