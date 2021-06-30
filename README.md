@@ -43,7 +43,7 @@ platform support planned:
 
 [various]:
 - [win       - Microsoft Windows](http://www.microsoft.com/)
-- [x11       - UNIX-like X.org](http://www.freedesktop.org/)
+- [x11       - UNIX-like X.Org](http://www.x.org/)
 
 [x86_64]:
 - [beos      - BeOS/HaikuOS](https://www.haiku-os.org/)
