@@ -24,16 +24,20 @@ diautilio@gmail.com
 
 To install OSLib MODv2  
 
+
+[PSP]:
+
+```c
+make -f Makefile.psp
+cp -ar libosl.a to $PSPSDK/lib/  
+cp -ar src/*.h in $PSPSDK/include/
+```
+
+[other]:
+
 ```c
 cmake .
 make install
-```
-
-or
-
-```c
-cp -ar libosl.a to $PSPSDK/lib/  
-cp -ar src/*.h in $PSPSDK/include/
 ```
 
 # STATUS
