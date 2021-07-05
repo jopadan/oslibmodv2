@@ -49,10 +49,12 @@ platform support planned:
 - [win       - Microsoft Windows](http://www.microsoft.com/)
 - [x11       - UNIX-like X.Org](http://www.x.org/)
 
-[x86_64]:
+[x86/x86_64]:
 - [beos      - BeOS/HaikuOS](https://www.haiku-os.org/)
+- [amiga     - Commodore Amiga/x86/x86_64 AROS](https://aros.sf.net/)
 - [kolibrios - KolibriOS](https://www.kolibrios.org/)
-- [amiga     - Commodore Amiga/x86_64 AROS](https://aros.sf.net/)
+- [menuetos  - MenuetOS](https://www.kolibrios.org/)
+- [dos       - FreeDOS](http://www.freedos.org/)
 
 [MIPS R4x00]:
 - [pspmips   - Sony Playstation Portable](www.github.com/pspdev/)

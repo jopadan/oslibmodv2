@@ -430,9 +430,9 @@ void oslSwapBuffers()
 
 	if (osl_doubleBuffer) {								// Get the new draw buffer pointer
 #ifdef PSP
-		osl_curDrawBuf = oslAddVramPrefixPtr(glXSwapBuffers());
+		osl_curDrawBuf = oslAddVramPrefixPtr(sceGuSwapBuffers());
 #else
-		osl_curDrawBuf = oslGetUncachedPtr(glXSwapBuffers());
+		osl_curDrawBuf = oslGetUncachedPtr(sceGuSwapBuffers());
 #endif
 	}
 	osl_defaultBufferImage.data = osl_curDrawBuf;		// Setup DEFAULT data ptr
@@ -443,35 +443,35 @@ void oslSwapBuffers()
 void oslSetBilinearFilter(int enabled)
 {
 	osl_bilinearFilterEnabled = enabled;
-	glTexFilter(enabled?GL_LINEAR:GL_NEAREST, enabled?GL_LINEAR:GL_NEAREST);
+	sceGuTexFilter(enabled?GU_LINEAR:GU_NEAREST, enabled?GU_LINEAR:GU_NEAREST);
 }
 
 void oslSetDithering(int enabled)
 {
 	osl_ditheringEnabled = enabled;
 	if (enabled)
-		glEnable(GL_DITHER);
+		sceGuEnable(GU_DITHER);
 	else
-		glDisable(GL_DITHER);
+		sceGuDisable(GU_DITHER);
 }
 
 void oslSetAlphaTest(int condition, int value)		{
 	if (!osl_alphaTestEnabled)		{
-		glAlphaFunc(condition, value, 0xff);
-		glEnable(GL_ALPHA_TEST);
+		sceGuAlphaFunc(condition, value, 0xff);
+		sceGuEnable(GU_ALPHA_TEST);
 	}
 	osl_alphaTestEnabled = 1;
 }
 
 void oslDisableAlphaTest()		{
 	if (osl_alphaTestEnabled)
-		glDisable(GL_ALPHA_TEST);
+		sceGuDisable(GU_ALPHA_TEST);
 	osl_alphaTestEnabled = 0;
 }
 
 void oslClearScreen(int backColor)		{
-	glClearColor(backColor);
-	glClear(GL_COLOR_BUFFER_BIT);
+	sceGuClearColor(backColor);
+	sceGuClear(GU_COLOR_BUFFER_BIT);
 }
 
 
