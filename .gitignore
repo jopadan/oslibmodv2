@@ -15,3 +15,4 @@ samples/**/*.SFO
 
 # Ignore documentation directory
 OSLib_Documentation/
+src/libpspmath/*.a
