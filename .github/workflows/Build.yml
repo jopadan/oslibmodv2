@@ -34,11 +34,13 @@ jobs:
           FILE=$(basename $URL)
           wget $URL
           tar -xzf $FILE
-          export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
-          export PATH="$(brew --prefix libtool)/libexec/gnubin:$PATH"
-          export PKG_CONFIG_PATH="$(brew --prefix libarchive)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig"
-          export PSPDEV=$PWD/pspdev
-          export PATH=$PATH:$PSPDEV/bin
+          echo "PSPDEV=$PWD/pspdev" >> $GITHUB_ENV
+          echo "$PWD/pspdev/bin" >> $GITHUB_PATH
+          if command -v brew >/dev/null 2>&1; then
+            echo "$(brew --prefix gnu-sed)/libexec/gnubin" >> $GITHUB_PATH
+            echo "$(brew --prefix libtool)/libexec/gnubin" >> $GITHUB_PATH
+            echo "PKG_CONFIG_PATH=$(brew --prefix libarchive)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig" >> $GITHUB_ENV
+          fi
       - name: Runs build in shell
         run: make
 
