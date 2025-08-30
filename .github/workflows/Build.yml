@@ -25,10 +25,9 @@ jobs:
       - &setup_pspdev
         name: Setup PSPDEV Environment
         run: |
-          # Set OS specific variables
-          if [[ "${{ matrix.os[0] }}" == "ubuntu-22.04" ]]; then
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
             URL="https://github.com/pspdev/pspdev/releases/download/v20240609/pspdev-ubuntu-latest-x86_64.tar.gz"
-          elif [[ "${{ matrix.os[0] }}" == "macos-13" ]]; then
+          elif [[ "$RUNNER_OS" == "macOS" ]]; then
             URL="https://github.com/pspdev/pspdev/releases/download/v20240609/pspdev-macos-13-x86_64.tar.gz"
           fi
           FILE=$(basename $URL)
