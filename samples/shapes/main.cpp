@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 		if(!sys::skip)
 		{
 			sys::keys();
-			sys::vid::draw();
+			sys::draw();
 			sys::swap();
 		}
 	}
