@@ -1,11 +1,11 @@
 name: Build and Publish Docs
 on:
+  pull_request:
   push:
     branches:
       - '**'
-    tags:
-      - '*'
-  pull_request:
+    tags-ignore:
+      - '**'
 
 jobs:
   build:
@@ -42,50 +42,3 @@ jobs:
           fi
       - name: Runs build in shell
         run: make
-
-  publish-docs:
-    if: startsWith(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - *setup_pspdev
-      - name: Install doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen
-      - name: Generate documentation
-        run: make gendoc
-      - &publish_docs
-        name: Publish to GitHub Pages
-        run: make ghpages
-        env:
-          GIT_AUTHOR_NAME: github-actions
-          GIT_AUTHOR_EMAIL: github-actions@github.com
-          GIT_COMMITTER_NAME: github-actions
-          GIT_COMMITTER_EMAIL: github-actions@github.com
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  publish:
-    if: startsWith(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - *setup_pspdev
-      - name: Build project
-        run: make
-      - name: Generate release files
-        run: make release
-      - name: Compress release
-        run: |
-          mkdir -p dist
-          tar -czf dist/oslib-release-${GITHUB_REF##*/}.tar.gz Distrib/
-      - name: Install doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen
-      - name: Generate documentation
-        run: make gendoc
-      - *publish_docs
-      - name: Publish release on GitHub Releases
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            dist/oslib-release-${GITHUB_REF##*/}.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
