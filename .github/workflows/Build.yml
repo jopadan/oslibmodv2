@@ -1,4 +1,4 @@
-name: Build and Publish Docs
+name: Build
 on:
   pull_request:
   push:
@@ -41,4 +41,15 @@ jobs:
             echo "PKG_CONFIG_PATH=$(brew --prefix libarchive)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig" >> $GITHUB_ENV
           fi
       - name: Runs build in shell
-        run: make
+        run: |
+          make
+          make install
+
+      - name: Build all samples
+        run: |
+          for d in samples/*/ ; do
+            if [ -f "$d/makefile" ] || [ -f "$d/Makefile" ]; then
+              echo "Building $d"
+              make -C "$d"
+            fi
+          done
