@@ -41,7 +41,9 @@ jobs:
             echo "PKG_CONFIG_PATH=$(brew --prefix libarchive)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig" >> $GITHUB_ENV
           fi
       - name: Runs build in shell
-        run: make
+        run: |
+          make
+          make install
 
       - name: Build all samples
         run: |
