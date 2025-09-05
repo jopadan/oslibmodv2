@@ -1,4 +1,4 @@
-name: Build and Publish Docs
+name: Build
 on:
   pull_request:
   push:
@@ -42,3 +42,12 @@ jobs:
           fi
       - name: Runs build in shell
         run: make
+
+      - name: Build all samples
+        run: |
+          for d in samples/*/ ; do
+            if [ -f "$d/makefile" ] || [ -f "$d/Makefile" ]; then
+              echo "Building $d"
+              make -C "$d"
+            fi
+          done
